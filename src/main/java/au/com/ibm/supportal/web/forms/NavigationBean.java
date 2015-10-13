@@ -22,8 +22,8 @@ public class NavigationBean {
 	private SessionModel sessionModel;
 		
 	public void dashboard() {
-		getSessionModel().addPage(new PageDetails("dashboard.xhtml", null, null));
-		getSessionModel().setContent("dashboard.xhtml");
+		getSessionModel().addPage(new PageDetails("/dashboard.xhtml", null, null));
+		getSessionModel().setContent("/dashboard.xhtml");
 	}
 				
 	public void home() {
