@@ -21,16 +21,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import au.com.ibm.supportal.dao.Dao;
-import au.com.ibm.supportal.dao.IEnrollmentDao;
-import au.com.ibm.supportal.dao.ITrainingEventDao;
 import au.com.ibm.supportal.dao.IUserDao;
-import au.com.ibm.supportal.dao.relational.EnrollmentDao;
-import au.com.ibm.supportal.dao.relational.TrainingEventDao;
 import au.com.ibm.supportal.dao.relational.UserDao;
-import au.com.ibm.supportal.dao.relational.repository.EnrollmentRepository;
-import au.com.ibm.supportal.dao.relational.repository.Repo;
-import au.com.ibm.supportal.dao.relational.repository.TrainingEventRepository;
-import au.com.ibm.supportal.dao.relational.repository.UserRepository;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "au.com.ibm.labtracker.dao.relational.repository")
@@ -90,25 +82,5 @@ public class ModelJPAConfig {
 	
 	@Bean @Dao public IUserDao userDao() {
 		return new UserDao();
-	}
-		
-	@Bean @Dao public IEnrollmentDao enrollmentDao() {
-		return new EnrollmentDao();
-	}
-	
-	@Bean @Dao public ITrainingEventDao TrainingEventDao() {
-		return new TrainingEventDao();
-	}
-
-	@Bean @Repo public UserRepository userRepository(JpaRepositoryFactory jpaRepositoryFactory) {
-		return jpaRepositoryFactory.getRepository(UserRepository.class);
-	}
-
-	@Bean @Repo public TrainingEventRepository trainingEventRepository(JpaRepositoryFactory jpaRepositoryFactory) {
-		return jpaRepositoryFactory.getRepository(TrainingEventRepository.class);
-	}
-
-	@Bean @Repo public EnrollmentRepository EnrollmentRepository(JpaRepositoryFactory jpaRepositoryFactory) {
-		return jpaRepositoryFactory.getRepository(EnrollmentRepository.class);
 	}
 }
