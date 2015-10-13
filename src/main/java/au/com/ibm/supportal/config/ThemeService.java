@@ -67,6 +67,7 @@ public class ThemeService {
 		themes.add(new Theme(37, "Vader", "vader"));
 		themes.add(new Theme(38, "RIO", "rio"));
 		themes.add(new Theme(39, "Ronin", "ronin"));
+		themes.add(new Theme(39, "Adamantium", "adamantium"));
 		
 		// default theme to bootstrap
 		currentTheme = themes.get(40).getName();
