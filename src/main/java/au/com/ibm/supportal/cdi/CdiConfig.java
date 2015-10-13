@@ -12,6 +12,6 @@ public class CdiConfig {
 	
     @Produces  
     @Dependent  
-    @PersistenceContext(unitName="labtracker-db")  
+    @PersistenceContext(unitName="supportal-db")  
     private EntityManager entityManager;    
 }

@@ -16,8 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 @Configuration
-@ComponentScan({ "au.com.ibm.labtracker.config", "au.com.ibm.labtracker.service.impl", "au.com.ibm.labtracker.config", "au.com.ibm.labtracker.dao.relational",
-		"au.com.ibm.labtracker.dao", "au.com.ibm.labtracker.dao.relational", "au.com.ibm.labtracker.scaffold" })
+@ComponentScan({ "au.com.ibm.supportal.config", "au.com.ibm.supportal.service.impl", "au.com.ibm.supportal.config", "au.com.ibm.supportal.dao.relational",
+		"au.com.ibm.supportal.dao", "au.com.ibm.supportal.dao.relational", "au.com.ibm.supportal.scaffold" })
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired

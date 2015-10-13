@@ -24,7 +24,7 @@ import au.com.ibm.supportal.utils.UserRepositoryUserDetails;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-	@EJB(mappedName="java:module/UserSvc!au.com.ibm.labtracker.service.impl.UserSvc")
+	@EJB(mappedName="java:module/UserSvc!au.com.ibm.supportal.service.impl.UserSvc")
 	private IUserSvc userSvc;
 	
 	@Override

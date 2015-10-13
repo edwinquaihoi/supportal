@@ -25,7 +25,7 @@ import au.com.ibm.supportal.dao.IUserDao;
 import au.com.ibm.supportal.dao.relational.UserDao;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "au.com.ibm.labtracker.dao.relational.repository")
+@EnableJpaRepositories(basePackages = "au.com.ibm.supportal.dao.relational.repository")
 @EnableTransactionManagement
 public class ModelJPAConfig {
 
@@ -36,7 +36,7 @@ public class ModelJPAConfig {
 		DataSource dataSource = null;
 		
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		dataSource = builder.setName("test-labtracker-db").setType(EmbeddedDatabaseType.H2).build();
+		dataSource = builder.setName("test-supportal-db").setType(EmbeddedDatabaseType.H2).build();
         
         return dataSource;
 	}

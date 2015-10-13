@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class ApplicationConfig {
 
-	@Bean public org.apache.openejb.spring.Resource vamsDb() {
-		Resource vamsDb = new Resource();
+	@Bean public org.apache.openejb.spring.Resource supportalDb() {
+		Resource supportalDb = new Resource();
 		
 		/*
 		<property name="type" value="javax.sql.DataSource" />
@@ -32,15 +32,15 @@ public class ApplicationConfig {
 			</props>
 		</property>
 		 */
-		vamsDb.setType("javax.sql.DataSource");
-		vamsDb.setId("jdbc/vams-db");
+		supportalDb.setType("javax.sql.DataSource");
+		supportalDb.setId("jdbc/supportal-db");
 		
 		Properties properties = new Properties();
 		properties.put("JdbcDriver", "org.h2.Driver");
-		properties.put("JdbcUrl", "jdbc:h2:mem:vams-db");
-		vamsDb.setProperties(properties);
+		properties.put("JdbcUrl", "jdbc:h2:mem:supportal-db");
+		supportalDb.setProperties(properties);
 		
-		return vamsDb;
+		return supportalDb;
 	}
 
 	
@@ -75,7 +75,7 @@ public class ApplicationConfig {
 		openEJB.setProperties(properties);
 		
 		List<org.apache.openejb.spring.Resource> resources = new ArrayList<org.apache.openejb.spring.Resource>();
-		resources.add(vamsDb());
+		resources.add(supportalDb());
 		openEJB.setResources(resources);
 		//openEJB.setTransactionManager(txnManager());
 		

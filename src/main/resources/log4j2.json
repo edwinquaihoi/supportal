@@ -20,7 +20,7 @@
                             "ref": "Console"
                     }},
                     {
-                    "name": "au.com.csl.vams",
+                    "name": "au.com.ibm.supportal",
                     "level": "debug",
                     "additivity": "false",
                     "AppenderRef": {
