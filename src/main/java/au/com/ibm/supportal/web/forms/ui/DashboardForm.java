@@ -31,7 +31,8 @@ public class DashboardForm {
         pieModel1.set("Brand 3", 702);
         pieModel1.set("Brand 4", 421);
         
-        pieModel1.setExtender("skinPie1");
+        pieModel1.setExtender("skinPie");
+        pieModel1.setShowDataLabels(true);
     }
     
     private void createPieModel2() {
@@ -42,7 +43,8 @@ public class DashboardForm {
         pieModel2.set("Brand 3", 702);
         pieModel2.set("Brand 4", 421);
         
-        pieModel2.setExtender("skinPie2");
+        pieModel2.setExtender("skinPie");
+        pieModel2.setShowDataLabels(true);
     }
 
     private void createPieModel3() {
@@ -53,7 +55,8 @@ public class DashboardForm {
         pieModel3.set("Brand 3", 702);
         pieModel3.set("Brand 4", 421);
         
-        pieModel3.setExtender("skinPie3");
+        pieModel3.setExtender("skinPie");
+        pieModel3.setShowDataLabels(true);
     }
 
 	public PieChartModel getPieModel1() {

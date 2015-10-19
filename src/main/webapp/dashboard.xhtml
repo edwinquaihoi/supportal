@@ -15,49 +15,74 @@
     <h:form id="form">
 
 
-		<div class="Container30 Responsive100">
-			<div class="ContainerIndent">
-				<div class="Card">
-					<div class="CardTopic">
-						<i class="icon-search Fs30 Fleft MarRight10"></i>
-						<div class="EmptyBox10 ShowOnMobile"></div>
-						Invoice Finder<br/>
-						<span class="CardSubTopic">A quick search feature to determine the status of your invoice/purchase order</span>
-					</div>
-					<div class="SeparatorFull"></div>
+		<div class="Container25 Responsive100">
+			<div class="Container100 Responsive100">
+				<div class="ContainerIndent">
+					<div class="Card">
+						<div class="CardTopic">
+							<i class="icon-search Fs30 Fleft MarRight10"></i>
+							<div class="EmptyBox10 ShowOnMobile"></div>
+							Invoice Finder<br /> <span class="CardSubTopic">A quick
+								search feature to determine the status of your invoice/purchase
+								order</span>
+						</div>
+						<div class="SeparatorFull"></div>
 
-					<div class="Container100 Responsive100">
-	                    <div class="ContainerIndent">
-			                <h:panelGrid columns="1" styleClass="Wid100" cellpadding="4">
-								<p:outputLabel for="abn" value="ABN" styleClass="Wid90"/><p:inputText id="abn" style="width:95%"/>
-								<p:outputLabel for="invoice" value="Invoice #" styleClass="Wid90"/><p:inputText id="invoice" style="width:95%"/>
-								<p:outputLabel for="po" value="Purchase Order#" styleClass="Wid90"/><p:inputText id="po" style="width:95%" />
-								<p:outputLabel for="date" value="Date" styleClass="Wid90"/><p:inputText id="date" style="width:95%"/>
-							</h:panelGrid>
+						<div class="Container100 Responsive100">
+							<div class="ContainerIndent">
+								<h:panelGrid columns="1" styleClass="Wid100" cellpadding="4">
+									<p:outputLabel for="abn" value="ABN" styleClass="Wid90" />
+									<p:inputText id="abn" style="width:95%" />
+									<p:outputLabel for="invoice" value="Invoice #"
+										styleClass="Wid90" />
+									<p:inputText id="invoice" style="width:95%" />
+									<p:outputLabel for="po" value="Purchase Order#"
+										styleClass="Wid90" />
+									<p:inputText id="po" style="width:95%" />
+									<p:outputLabel for="date" value="Date" styleClass="Wid90" />
+									<p:inputText id="date" style="width:95%" />
+								</h:panelGrid>
+							</div>
+						</div>
+
+						<div class="Container100 Responsive100">
+							<div class="ContainerIndent">
+								<div class="TexAlCenter">
+									<div class="DispInlBlock TexAlCenter">
+										<p:button icon="fa fa-search White"
+											styleClass="Fright GreenButton" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="Container100 Responsive100">
+							<div class="ContainerIndent">
+								<div class="Card SoftGrayBack">
+									<i class="fa fa-file-text-o Fs40 Fleft Orange MarRight10"></i>
+									<div class="Fleft DispInlBlock">
+										<span class="Fs12 FontAdamantiumBold Gray">Status</span><br />
+										<span class="Fs12 FontAdamantiumBold">Reason</span><br /> <span
+											class="Fs12 FontAdamantiumRegular Green">Payement Due</span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+				</div>
+			</div>
 
-					<div class="Container100 Responsive100">
-	                    <div class="ContainerIndent">
-	                        <div class="TexAlCenter">
-	                            <div class="DispInlBlock TexAlCenter">
-	                       			<p:button icon="fa fa-search White" styleClass="Fright GreenButton"/>
-	                            </div>
-	                        </div>
-	                    </div>
-                    </div>
+			<div class="Container100 Responsive100">
+				<div class="ContainerIndent">
 
-					<div class="Container100 Responsive100">
-                            <div class="ContainerIndent">
-                                <div class="Card SoftGrayBack">
-                                    <i class="fa fa-file-text-o Fs40 Fleft Orange MarRight10"></i>
-                                    <div class="Fleft DispInlBlock">
-                                        <span class="Fs12 FontAdamantiumBold Gray">Status</span><br/>
-                                        <span class="Fs12 FontAdamantiumBold">Reason</span><br/>
-                                        <span class="Fs12 FontAdamantiumRegular Green">Payement Due</span>
-                                    </div>
-                                </div>
-                            </div>
+					<div class="Card">
+						<div class="CardTopic">
+							<i class="icon-search Fs30 Fleft MarRight10"></i>
+							<div class="EmptyBox10 ShowOnMobile"></div>
+							Supplier Links<br /> <span class="CardSubTopic"></span>
+						</div>
+						<div class="SeparatorFull"></div>
+
 					</div>
 				</div>
 			</div>
@@ -65,9 +90,11 @@
 
 
 		<!-- Left -->
-        <div class="Container70 Responsive100">
+        <div class="Container75 Responsive100">
+        
             <div class="Container100">
                 <div class="ContainerIndent">
+                
                     <div class="Card">
                         <div class="CardTopic"> <i class="icon-share Fs30 Fleft MarRight10"></i>
                             <div class="EmptyBox10 ShowOnMobile"></div>
@@ -77,6 +104,7 @@
                         
                         <div class="Container33 Responsive50">
                             <div class="ContainerIndent">
+                                <div class="Card SoftGrayBack">
                                 
 	                            	<div class="Container100 Responsive100">
 		                                <div class="Card RedBack Opac80 TexAlCenter">
@@ -87,15 +115,15 @@
     	                        	</div>
                                 
 	                            	<div class="Container100 Responsive100">
-	                                        <p:chart type="pie" model="#{dashboardForm.pieModel1}" responsive="true" style="height:270px;"/>
+	                                        <p:chart type="pie" model="#{dashboardForm.pieModel1}" responsive="true"/>
     	                        	</div>
-                                	
+                                </div>	
                             </div>
                         </div>                        
 
                         <div class="Container33 Responsive50">
-                            <div class="ContainerIndent">
-                                
+                            <div class="ContainerIndent">                                
+		                    	<div class="Card SoftGrayBack">
 	                            	<div class="Container100 Responsive100">
 		                                <div class="Card OrangeBack Opac80 TexAlCenter">
 		                                    <div class="DispInlBlock TexAlCenter">
@@ -105,14 +133,15 @@
     	                        	</div>
                                 
 	                            	<div class="Container100 Responsive100">
-	                                        <p:chart type="pie" model="#{dashboardForm.pieModel2}" responsive="true" style="height:270px;"/>
+	                                        <p:chart type="pie" model="#{dashboardForm.pieModel2}" responsive="true"/>
     	                        	</div>
-                                	
+								</div>                                	
                             </div>
                         </div>
                         
                         <div class="Container33 Responsive50">
                             <div class="ContainerIndent">
+		                    	<div class="Card SoftGrayBack">
                                 
 	                            	<div class="Container100 Responsive100">
 		                                <div class="Card GreenBack Opac80 TexAlCenter">
@@ -123,18 +152,30 @@
     	                        	</div>
                                 
 	                            	<div class="Container100 Responsive100">
-	                                        <p:chart type="pie" model="#{dashboardForm.pieModel3}" responsive="true" style="height:270px;"/>
-    	                        	</div>
-                                	
-                                </div>
+	                                        <p:chart type="pie" model="#{dashboardForm.pieModel3}" responsive="true"/>
+    	                        	</div>                                	
+                                </div>                                
+                            </div>
                         </div>
                         
-                        <div class="EmptyBox20"></div>
-                        <!-- <p:chart type="bar" model="#{chartView.barModel}" style="height:270px;" responsive="true"/> -->
                     </div>
+
                 </div>
             </div>
-        </div>
+        
+        	<div class="Container100">
+                <div class="ContainerIndent">
+                
+                    <div class="Card">
+                        <div class="CardTopic"> <i class="icon-share Fs30 Fleft MarRight10"></i>
+                            <div class="EmptyBox10 ShowOnMobile"></div>Invoices<br/>
+                            <span class="CardSubTopic"></span> 
+                        </div>
+                        <div class="SeparatorFull"></div>
+                    </div>
+                </div>
+	       	</div>
+		</div>
         
     </h:form>
 
