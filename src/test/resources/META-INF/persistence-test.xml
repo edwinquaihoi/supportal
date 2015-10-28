@@ -15,7 +15,9 @@
 		
 		<non-jta-data-source>test-supportal-db</non-jta-data-source>
 		
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<class>au.com.ibm.supportal.model.relational.AppUser</class>
+		<class>au.com.ibm.supportal.model.relational.Invoice</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		<properties>
 			 

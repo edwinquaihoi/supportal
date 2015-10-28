@@ -21,7 +21,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import au.com.ibm.supportal.dao.Dao;
+import au.com.ibm.supportal.dao.IInvoiceDao;
 import au.com.ibm.supportal.dao.IUserDao;
+import au.com.ibm.supportal.dao.relational.InvoiceDao;
 import au.com.ibm.supportal.dao.relational.UserDao;
 
 @Configuration
@@ -82,5 +84,9 @@ public class ModelJPAConfig {
 	
 	@Bean @Dao public IUserDao userDao() {
 		return new UserDao();
+	}
+
+	@Bean @Dao public IInvoiceDao invoiceDao() {
+		return new InvoiceDao();
 	}
 }
