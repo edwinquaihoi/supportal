@@ -1,5 +1,6 @@
 package au.com.ibm.supportal.model.relational;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -19,6 +20,10 @@ public class Invoice extends AbstractMasterEntity<String> {
 	private static final long serialVersionUID = -5548325782346547585L;
 
 	public static final String BLOCKED = "Blocked";
+	public static final String REJECTED = "Rejected";
+	public static final String PAID = "Paid";
+	public static final String FREE_FOR_PAYMENT = "Free for payment";
+	public static final String IN_PROGRESS = "In progress";
 	
 	public static final String TYPE_CREDIT = "Credit";
 	public static final String TYPE_INVOICE = "Invoice";
@@ -40,7 +45,7 @@ public class Invoice extends AbstractMasterEntity<String> {
 	Date paymentBaseline;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	Date plannedPayement;
+	Date plannedPayment;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	Date dueDate;
@@ -51,7 +56,7 @@ public class Invoice extends AbstractMasterEntity<String> {
 	
 	String PO;
 	
-	long value;
+	double value;
 	
 	String currency;
 	
@@ -115,12 +120,12 @@ public class Invoice extends AbstractMasterEntity<String> {
 		this.paymentBaseline = paymentBaseline;
 	}
 
-	public Date getPlannedPayement() {
-		return plannedPayement;
+	public Date getPlannedPayment() {
+		return plannedPayment;
 	}
 
-	public void setPlannedPayement(Date plannedPayement) {
-		this.plannedPayement = plannedPayement;
+	public void setPlannedPayment(Date plannedPayment) {
+		this.plannedPayment = plannedPayment;
 	}
 
 	public Date getDueDate() {
@@ -155,11 +160,11 @@ public class Invoice extends AbstractMasterEntity<String> {
 		PO = pO;
 	}
 
-	public long getValue() {
+	public double getValue() {
 		return value;
 	}
 
-	public void setValue(long value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 
@@ -179,6 +184,23 @@ public class Invoice extends AbstractMasterEntity<String> {
 		this.email = email;
 	}
 	
+	public String getFormattedPaymentBaseline() {
+		String result = null;
+		if(getPaymentBaseline() != null)
+			result = new SimpleDateFormat("dd-MMM-yy").format(getPaymentBaseline());
+		return result;
+	}
 	
+	public String getFormattedDueDate() {
+		String result = null;
+		if(getDueDate() != null) result = new SimpleDateFormat("dd-MMM-yy").format(getDueDate());
+		return result;
+	}
+	
+	public String getFormattedPlannedPayment() {
+		String result = null;
+		if(getPlannedPayment() != null) result = new SimpleDateFormat("dd-MMM-yy").format(getPlannedPayment());
+		return result;
+	}
 
 }

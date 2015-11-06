@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+			<p:outputPanel rendered="#{! invoiceForm.validateLoggedIn()}">
+			<div class="Container100">
+				<div class="ContainerIndent">
+
+					<div class="Card">
+						<div class="CardTopic">
+							<i class="icon-share Fs30 Fleft MarRight10"></i>
+							<div class="EmptyBox10 ShowOnMobile"></div>
+							Login<br /> <span class="CardSubTopic">For Registered
+								Suppliers</span>
+						</div>
+						<div class="SeparatorFull" />
+						<div class="Container40 Responsive100"><p:outputLabel value="Username" for="loginPanelUser"/></div>
+						<div class="Container60 Responsive60">
+							<p:inputText id="loginPanelUser" placeholder="Username"
+								value="#{loginForm.userName}" />
+						</div>
+						<div class="EmptyBox5" />
+						<div class="Container40 Responsive100"><p:outputLabel value="Password" for="loginPanelPassword"/></div>
+						<div class="Container60 Responsive60">
+							<p:inputText id="loginPanelPassword" type="Password" placeholder="password"
+								value="#{loginForm.password}" />
+						</div>
+						<div class="EmptyBox5" />
+						<div class="Container40 Responsive100"><div class="EmptyBox10"></div></div>					
+						<p:commandButton id="loginPanelSignInButton" value="Sign In" icon="fa fa-sign-in"
+								styleClass="RaisedButton" update="form, growl"
+								action="#{loginForm.login}" ajax="true"/>
+						<div class="EmptyBox5" />
+						<div class="Container40 Responsive100"><div class="EmptyBox10"></div></div>					
+						<p:commandLink value="Forgot Password?" icon="fa fa-lock"
+								styleClass="Wid40" update="growl"
+								action="#{loginForm.forgotPwd}" ajax="true" />
+						
+						<div class="EmptyBox5" />
+						<div class="Container40 Responsive100"><div class="EmptyBox10"></div></div>					
+						<p:commandLink value="Request Access"
+								action="#{appUserForm.viewNewOne()}" ajax="true"
+								update="form" process="@this"
+								icon="fa fa-key"
+								styleClass="Wid40" />						
+					</div>
+				</div>
+			</div>
+			</p:outputPanel>
+			
+			
+			<p:outputPanel rendered="#{invoiceForm.validateLoggedIn()}">
+			<div class="Container100">
+				<div class="ContainerIndent">
+
+					<div class="Card">
+						<div class="CardTopic">
+							<i class="icon-share Fs30 Fleft MarRight10"></i>
+							<div class="EmptyBox10 ShowOnMobile"></div>
+							#{loginForm.loggedUser}<br /> <span class="CardSubTopic">Manage user settings</span>
+						</div>
+						<div class="SeparatorFull" />
+						<div class="Container40 Responsive100"><div class="EmptyBox10"></div></div>
+						<p:commandButton id="loginPanelSignOutButton" value="Logout" icon="fa fa-sign-out"
+								styleClass="RaisedButton" update="form, growl"
+								action="#{loginForm.logout}" ajax="true"/>
+						<div class="EmptyBox10" />
+						<div class="Container40 Responsive100"><div class="EmptyBox10"></div></div>					
+						<p:commandLink value="Change settings"
+								styleClass="Wid40" update="growl"
+								action="#{loginForm.changePwd}" ajax="true" />
+						
+						<div class="EmptyBox5" />
+										
+					</div>
+				</div>
+			</div>
+			</p:outputPanel>
+
+</ui:composition>

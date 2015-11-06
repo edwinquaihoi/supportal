@@ -1,15 +1,13 @@
 package au.com.ibm.supportal.web.forms;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,7 +15,6 @@ import javax.servlet.ServletException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -29,6 +26,7 @@ import au.com.ibm.supportal.scaffold.IService;
 import au.com.ibm.supportal.service.IUserSvc;
 import au.com.ibm.supportal.utils.Role;
 import au.com.ibm.supportal.utils.ValidationUtils;
+import au.com.ibm.supportal.web.forms.ui.InvoiceForm;
 
 @ManagedBean
 public class LoginForm extends AbstractMaintenanceForm<String, AppUser> {
@@ -41,6 +39,9 @@ public class LoginForm extends AbstractMaintenanceForm<String, AppUser> {
 
 	@EJB
 	private IUserSvc userSvc;
+	
+	@ManagedProperty(value = "#{invoiceForm}")
+	InvoiceForm invoiceForm;
 
 	public IUserSvc getUserSvc() {
 		return userSvc;
@@ -48,6 +49,16 @@ public class LoginForm extends AbstractMaintenanceForm<String, AppUser> {
 
 	public void setUserSvc(IUserSvc userSvc) {
 		this.userSvc = userSvc;
+	}
+	
+	
+
+	public InvoiceForm getInvoiceForm() {
+		return invoiceForm;
+	}
+
+	public void setInvoiceForm(InvoiceForm invoiceForm) {
+		this.invoiceForm = invoiceForm;
 	}
 
 	@PostConstruct
@@ -105,7 +116,8 @@ public class LoginForm extends AbstractMaintenanceForm<String, AppUser> {
 			setLoggedUser(authentication.getName());
 			setLoggedRole(validateAdmin() ? Role.ADMIN.display() : Role.USER.display());
 			
-			getSessionModel().reset();
+			getSessionModel().init();
+			invoiceForm.viewList();
 
 		} catch (Exception ex) {
 			// log.equals(ex.getMessage());
@@ -130,19 +142,12 @@ public class LoginForm extends AbstractMaintenanceForm<String, AppUser> {
 
 	}
 
-	public boolean validateAdmin() {
-		return ValidationUtils.isAdmin();
-	}
-	
-	
-	public boolean validateLoggedIn() {
-		return ValidationUtils.isLoggedIn();
-	}
-
-
-
 	public String loginScreen() {
 		return "login.xhtml?faces-redirect=true";
+	}
+	
+	public void forgotPwd() {
+		ConfigUtil.growl("Action required.", "Send an email to admin to reset the password", FacesMessage.SEVERITY_WARN);
 	}
 
 	@Override

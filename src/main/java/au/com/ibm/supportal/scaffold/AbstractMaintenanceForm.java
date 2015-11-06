@@ -6,6 +6,7 @@ import java.util.List;
 
 import au.com.ibm.supportal.config.ConfigUtil;
 import au.com.ibm.supportal.utils.PageDetails;
+import au.com.ibm.supportal.utils.ValidationUtils;
 import au.com.ibm.supportal.web.forms.Mode;
 import au.com.ibm.supportal.web.forms.SessionModel;
 
@@ -45,6 +46,15 @@ public abstract class AbstractMaintenanceForm<K, T extends IMasterPersistentEnti
 		getSessionModel().setModel(getNewOne());
 		getSessionModel().setMode(Mode.NEW);
 		getSessionModel().setContent(getViewForOne());
+	}
+	
+	public boolean validateAdmin() {
+		return ValidationUtils.isAdmin();
+	}
+	
+	
+	public boolean validateLoggedIn() {
+		return ValidationUtils.isLoggedIn();
 	}
 
 	@SuppressWarnings("unchecked")

@@ -73,6 +73,8 @@ public class InvoiceSvc implements IInvoiceSvc {
 	public void uplaodInvoiceData(List<Invoice> invoiceList) {
 		getDao().save(invoiceList);
 		getDao().flush();
+		System.out.println(invoiceList.get(0).getValue());
 		System.out.println(getDao().findAll());
+		
 	}
 }

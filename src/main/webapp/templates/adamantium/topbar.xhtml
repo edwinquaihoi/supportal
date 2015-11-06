@@ -14,9 +14,14 @@
             <span id="menuline2" class="Animated05"></span>
             <span id="menuline3" class="Animated05"></span>
         </a>
-        <a href="/adamantium/dashboard.xhtml"><h:graphicImage name="images/logo.svg" id="logo" library="adamantium-layout" /></a>
+        <p:commandLink ajax="true" action="#{navigationBean.dashboard}" update="mainContent,form">
+        	<p:graphicImage library="custom" styleClass="Fleft"
+					style="width:auto;height:3em;vertical-align:middle;margin:10px;"
+					name="images/telstra.png" />
+			<h2 class="BigTopic Fs20" style="margin-top: 15px !important;"> Supplier Information</h2>
+		</p:commandLink>
         
-        <a id="topmenu-button" class="Animated1">
+<!--         <a id="topmenu-button" class="Animated1">
             <i class="icon-list2"></i>
         </a>
         
@@ -64,7 +69,7 @@
                 </ul>
             </li>
         </ul>
-    </div>
+ -->    </div>
     <!-- TOPBAR END -->
     
 </ui:composition>

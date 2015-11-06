@@ -1,0 +1,188 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="subheader">
+        Telstra Supplier Information
+    </ui:define>
+
+	<h:form id="form">
+		<div class="Container60 Responsive100">
+			<div class="Container100">
+				<div class="ContainerIndent">
+
+					<div class="Card">
+						<div class="CardTopic">
+							<i class="icon-share Fs30 Fleft MarRight10"></i>
+							<div class="EmptyBox10 ShowOnMobile"></div>
+							Invoice Status<br /> <span class="CardSubTopic">Metrics
+								and analysis</span>
+						</div>
+						<div class="SeparatorFull"></div>
+						<div class="Container50 Responsive100 TexAlCenter">
+							<p:outputPanel style="margin-bottom:10px" cellpadding="5">
+								<h:outputText value="Search invoice:" />
+			               		<p:inputText id="searchInvoiceFilter" style="background-color: transparent;" styleClass="" placeholder="Type invoice number"/>
+							</p:outputPanel>
+						</div>
+						<div class="Container50 Responsive100 TexAlRight">
+							<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+								<p:outputLabel for="duration"  value="Period:"/>
+				                <p:selectOneMenu id="duration" value="">
+						            <f:selectItem itemLabel="30" itemValue="30" />
+						            <f:selectItem itemLabel="60" itemValue="60" />
+						            <f:selectItem itemLabel="90" itemValue="90" />
+						            <f:selectItem itemLabel="All" itemValue="All" />
+						        </p:selectOneMenu>
+					        </h:panelGrid>					            		
+						</div>
+						<div class="Container33 Responsive50">
+							<div class="ContainerIndent">
+								<div class="Container100 Responsive100">
+									<div class="Card ShadowEffect RedBack Opac80 TexAlCenter">
+										<div class="DispInlBlock TexAlCenter">
+											<span class="Fs60 FontAdamantiumBold White">2</span><br />
+											<div class="SeparatorFull"></div>
+											<h:outputText styleClass="White" value="BLOCKED (1)"/>
+											<div class="EmptyBox10"></div>
+											<h:outputText styleClass="White" value="REJECTED (1)"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="Container33 Responsive50">
+							<div class="ContainerIndent">
+								<div class="Container100 Responsive100">
+									<div class="Card ShadowEffect YellowBack Opac80 BoldGray TexAlCenter">
+										<div class="DispInlBlock TexAlCenter">
+											<span class="Fs60 FontAdamantiumBold">55</span><br />
+											<div class="SeparatorFull"></div>
+											<h:outputText value="IN PROGRESS (55)"/>
+											<div class="EmptyBox10"></div>
+											<!-- space &nbsp; -->
+											<h:outputText styleClass="White" value="&#160;"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="Container33 Responsive50">
+							<div class="ContainerIndent">
+								<div class="Container100 Responsive100">
+									<div class="Card ShadowEffect GreenBack White Opac80 TexAlCenter">
+										<div class="DispInlBlock TexAlCenter">
+											<span class="Fs60 FontAdamantiumBold ">999</span><br />
+											<div class="SeparatorFull"></div>
+											<h:outputText value="FREE FOR PAYMENT (2)"/>
+											<div class="EmptyBox10"></div>
+											<h:outputText value="PAID (997)"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="Container40 Responsive100">
+			<ui:insert name="content">
+				<ui:include src="/loginPanel.xhtml" />
+			</ui:insert>
+		</div>
+
+		<div class="Container100 Responsive100">
+			<div class="Container100">
+				<div class="ContainerIndent">
+
+					<div class="Card">
+						<div class="Container100 Responsive100">
+							<p:dataTable id="invoices" widgetVar="invoicesTable" var="invoice" value="#{invoiceForm.sessionModel.results}" sortMode="multiple" reflow="true" rows="10" paginator="true"
+							 	emptyMessage="No invoices found with given criteria" filteredValue="#{invoiceForm.filteredInvoices}">
+							    <f:facet name="header">
+							    	<div class="TexAlCenter">
+								        <p:outputPanel styleClass="Container30 Responsive100 TexAlCenter">
+							                <h:outputText value="Search all fields:" />
+							                <p:inputText id="globalFilter" onkeyup="PF('invoicesTable').filter()" style="background-color: transparent;" styleClass="MarRight10" placeholder="Enter keyword"/>
+							                <div class="EmptyBox10"></div>
+									    </p:outputPanel>
+									    <p:outputPanel styleClass="Container40 Responsive100 TexAlCenter">
+							                <h:outputText style="display:block;margin-top:5px;" value="#{invoiceForm.getSessionModel().getResults().size()} search results" /> 
+							                <div class="EmptyBox10"></div>
+									    </p:outputPanel>
+									    <p:outputPanel styleClass="Container30 Responsive100 TexAlCenter">
+									        <p:commandButton id="toggler" type="button" value="Select Columns" icon="fa fa-columns White"/>
+									        <p:columnToggler datasource="invoices" trigger="toggler" />
+							            </p:outputPanel>
+						          	</div>	
+						          	<br/><br/>
+							    </f:facet>
+						        <p:column headerText="Invoice#" sortBy="#{invoice.invoiceNo}" filterBy="#{invoice.invoiceNo}" filterMatchMode="contains">
+						        	<h:outputText value="#{invoice.invoiceNo}" />
+						        </p:column>
+						 
+						        <p:column headerText="Status:" sortBy="#{invoice.status}" filterBy="#{invoice.status}" filterMatchMode="contains">
+						            <h:outputText value="#{invoice.status}" />
+						        </p:column>
+						 
+						        <p:column headerText="Payment Baseline:" sortBy="#{invoice.paymentBaseline}">
+						            <h:outputText value="#{invoice.formattedPaymentBaseline}" />
+						        </p:column>
+						        
+						         <p:column headerText="Reason:" sortBy="#{invoice.reason}" filterBy="#{invoice.reason}" filterMatchMode="contains"	>
+						        	<h:outputText value="#{invoice.reason}" />
+						        </p:column>
+						        
+						        <p:column headerText="Due:" sortBy="#{invoice.dueDate}">
+						            <h:outputText value="#{invoice.formattedDueDate}" />
+						        </p:column>
+						        
+						        <p:column headerText="Planned Payment:" sortBy="#{invoice.plannedPayment}">
+						            <h:outputText value="#{invoice.formattedPlannedPayment}" />
+						        </p:column>
+						        
+						        <p:column headerText="Remittance Advise#" sortBy="#{invoice.remittanceNo}" filterBy="#{invoice.remittanceNo}" filterMatchMode="contains"	>
+						        	<h:outputText value="#{invoice.remittanceNo}" />
+						        </p:column>
+						        
+						        <p:column headerText="Telstra Invoice (internal):" sortBy="#{invoice.internalInvoiceNo}" filterBy="#{invoice.internalInvoiceNo}" filterMatchMode="contains"	>
+						        	<h:outputText value="#{invoice.internalInvoiceNo}" />
+						        </p:column>
+						        
+						        <p:column headerText="PO#" sortBy="#{invoice.PO}" filterBy="#{invoice.PO}" filterMatchMode="contains"	>
+						        	<h:outputText value="#{invoice.PO}" />
+						        </p:column>
+						 
+						        <p:column headerText="Value (incl. GST):" sortBy="#{invoice.value}">
+						            <h:outputText value="$ #{invoice.value}">
+						            	<f:convertNumber minFractionDigits="2" />
+						           	</h:outputText>
+						        </p:column>
+						        
+						        <p:column headerText="Currency:" sortBy="#{invoice.currency}">
+						            <h:outputText value="#{invoice.currency}" />
+						        </p:column>
+						        
+						        <p:column headerText="Requester email:" sortBy="#{invoice.email}" filterBy="#{invoice.email}" filterMatchMode="contains"	>
+						        	<h:outputText value="#{invoice.email}" />
+						        </p:column>
+							</p:dataTable>
+						</div>					
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</h:form>
+
+</ui:composition>

@@ -158,7 +158,7 @@ public class SessionModel<T extends IMasterPersistentEntity> implements Serializ
 	}
 
 	public void reset() {
-		content = "dashboard.xhtml";
+		content = "/dashboard.xhtml";
 		init();
 	}
 }
